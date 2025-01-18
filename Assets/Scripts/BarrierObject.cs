@@ -55,7 +55,7 @@ public class BarrierObject : MonoBehaviour
             spawnRateDelta = SpawnRate;
             //number range will be 1-4
             var selection = Random.Range(1, 5);
-            Debug.Log(selection);
+
             var randomX = Random.Range(-screenBounds.x, screenBounds.x);
             var randomY = Random.Range(-screenBounds.y, screenBounds.y);
             switch ((Barrier)selection)
