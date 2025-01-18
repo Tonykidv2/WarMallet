@@ -14,6 +14,13 @@ public class BarrierObject : MonoBehaviour
     private GameObject rightBarrier;
 
     private Vector3 screenBounds;
+    enum Barrier
+    {
+        Top = 1,
+        Bottom, 
+        Left, 
+        Right
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -46,8 +53,26 @@ public class BarrierObject : MonoBehaviour
         if (spawnRateDelta <= 0)
         {
             spawnRateDelta = SpawnRate;
-            var random = Random.Range(-screenBounds.x, screenBounds.x);
-            Instantiate(enemyPrefab, new Vector3(random, topBarrier.transform.position.y, 0), new Quaternion());
+            //number range will be 1-4
+            var selection = Random.Range(1, 5);
+            Debug.Log(selection);
+            var randomX = Random.Range(-screenBounds.x, screenBounds.x);
+            var randomY = Random.Range(-screenBounds.y, screenBounds.y);
+            switch ((Barrier)selection)
+            {
+                case Barrier.Top:
+                    Instantiate(enemyPrefab, new Vector3(randomX, topBarrier.transform.position.y, 0), new Quaternion());
+                    break;
+                case Barrier.Bottom:
+                    Instantiate(enemyPrefab, new Vector3(randomX, bottomBarrier.transform.position.y, 0), new Quaternion());
+                    break;
+                case Barrier.Left:
+                    Instantiate(enemyPrefab, new Vector3(leftBarrier.transform.position.x, randomY , 0), new Quaternion());
+                    break;
+                case Barrier.Right:
+                    Instantiate(enemyPrefab, new Vector3(rightBarrier.transform.position.x , randomY , 0), new Quaternion());
+                    break;
+            }
         }
     }
 }
