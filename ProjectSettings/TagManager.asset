@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Bullet
   - Enemy
+  - Barrier
+  - PauseMenu
   layers:
   - Default
   - TransparentFX

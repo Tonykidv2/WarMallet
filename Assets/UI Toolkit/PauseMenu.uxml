@@ -1,0 +1,6 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/PauseMenuStyle.uss?fileID=7433441132597879392&amp;guid=f0ea214e5b9d47d43baf5af2c9b35874&amp;type=3#PauseMenuStyle" />
+    <engine:Label text="Paused" style="font-size: 50px; -unity-font-style: bold; -unity-text-align: middle-center;" />
+    <engine:Button text="Resume" name="Resume" class="button" style="background-image: url(&quot;project://database/Assets/%234%20Sweet%20Buttons/PNGs/2-Sapphire.png?fileID=21300000&amp;guid=59fc95fe5935fdc479c7448d0757555b&amp;type=3#2-Sapphire&quot;); background-position-x: center 0; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
+    <engine:Button text="Back to Main Menu&#10;" name="QuitToMenu" class="button" />
+</engine:UXML>

@@ -11,6 +11,10 @@ public class LookAtMouse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Paused
+        if (Time.timeScale < 1.0f)
+            return;
+
         // convert mouse position into world coordinates
         Vector2 mouseScreenPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 

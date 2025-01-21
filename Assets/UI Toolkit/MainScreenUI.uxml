@@ -1,0 +1,8 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MainScreenStyle.uss?fileID=7433441132597879392&amp;guid=9441074e81e80f8418170c8c9a199f68&amp;type=3#MainScreenStyle" />
+    <engine:VisualElement name="MainMenu" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Image/MainMenuBackground.png?fileID=6850352397346096737&amp;guid=65acdf473db8980468323bd5d10676b2&amp;type=3#MainMenuBackground_0&quot;);">
+        <engine:Label text="Main Menu" name="MainMenu" class="header" />
+        <engine:Button text="Start" name="Start" class="button" style="border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
+        <engine:Button text="Quit" name="Quit" class="button" style="border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
+    </engine:VisualElement>
+</engine:UXML>

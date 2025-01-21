@@ -1,0 +1,26 @@
+.header {
+}
+
+.button {
+    font-size: 50px;
+    -unity-text-align: middle-center;
+    width: 40%;
+    height: 15%;
+    background-image: url("project://database/Assets/%234%20Sweet%20Buttons/PNGs/2-Sapphire.png?fileID=21300000&guid=59fc95fe5935fdc479c7448d0757555b&type=3#2-Sapphire");
+    background-color: rgba(55, 55, 55, 0);
+    align-items: auto;
+    align-self: center;
+    color: rgb(245, 245, 245);
+    -unity-font-style: bold;
+    top: 50%;
+    margin-top: 20px;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    background-size: 100% 100%;
+    -unity-background-scale-mode: stretch-to-fill;
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+.button:hover {
+    -unity-background-image-tint-color: rgba(113, 113, 243, 0.78);
+}
