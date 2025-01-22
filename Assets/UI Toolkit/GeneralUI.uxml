@@ -1,0 +1,4 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/GeneralUI.uss?fileID=7433441132597879392&amp;guid=53c6f77f5337f33429b5e9bfb70ebb60&amp;type=3#GeneralUI" />
+    <engine:VisualElement name="Container" style="flex-grow: 1;" />
+</engine:UXML>

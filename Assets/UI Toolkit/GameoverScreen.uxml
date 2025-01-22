@@ -1,0 +1,9 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement name="Container" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Image/GameOverBackground.png?fileID=2800000&amp;guid=2e22dd4bb77c9a94fa32f3106b7f450f&amp;type=3#GameOverBackground&quot;); width: auto; align-items: center;">
+        <engine:VisualElement name="Score" style="flex-grow: 1; height: 50%; max-height: 50%; flex-direction: row; align-items: flex-end; justify-content: center; align-self: center;">
+            <engine:Label text="Final Score:" name="FinalScoreText" style="align-items: auto; font-size: 45px; color: rgb(0, 255, 40); -unity-font-style: bold;" />
+            <engine:Label text="Label" name="FinalScoreNumber" style="font-size: 50px; color: rgb(28, 241, 90); -unity-font-style: bold-and-italic;" />
+        </engine:VisualElement>
+        <engine:Button text="Restart" name="Restart" style="width: 25%; height: 10%; background-image: url(&quot;project://database/Assets/%234%20Sweet%20Buttons/PNGs/1-Blue.png?fileID=2800000&amp;guid=0b2a16efe317d7b42828f0b6b3d2e7c7&amp;type=3#1-Blue&quot;); background-color: rgba(188, 188, 188, 0); border-top-width: 0; border-left-width: 0; border-right-width: 0; border-bottom-width: 0; color: rgb(255, 255, 255); font-size: 61px; margin-top: 40px;" />
+    </engine:VisualElement>
+</engine:UXML>

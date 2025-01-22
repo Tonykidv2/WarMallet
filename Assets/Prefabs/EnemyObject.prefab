@@ -179,4 +179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b32cf99da05a143b7360086ab31a7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyName: 
   Speed: 5
+  hasHurtEnemy: 0
+  pushBack: 0.5
+  pushBackDelta: 0

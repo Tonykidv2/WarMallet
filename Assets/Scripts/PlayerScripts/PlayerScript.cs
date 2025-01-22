@@ -6,8 +6,11 @@ public class PlayerScript : MonoBehaviour
 {
     public float Speed = 10f;
     public GameObject PauseMenu;
+    public GameObject GameOver;
     public GameObject bullet;
     public Transform LaunchOffset;
+
+    public HealthManager HealthManager;
 
     private Rigidbody2D rigidBody;
     private PlayerInput playerInput;
@@ -30,19 +33,27 @@ public class PlayerScript : MonoBehaviour
         menuAction = playerInput.actions.FindAction("Pause");
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
 
+        HealthManager = GameObject.FindGameObjectWithTag("Healthbar").GetComponent<HealthManager>();
+
         PauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
         PauseMenu.GetComponent<UIDocument>().rootVisualElement.style.display = DisplayStyle.None;
-        
+        GameOver = GameObject.FindGameObjectWithTag("GameOver");
+        GameOver.GetComponent<UIDocument>().rootVisualElement.style.display = DisplayStyle.None;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(HealthManager.GetHealth() <= 0)
+        {
+            Time.timeScale = 0;
+            GameOver.GetComponent<UIDocument>().rootVisualElement.style.display = DisplayStyle.Flex;
+        }
+
         if(shootAction.triggered && Time.timeScale != 0 && !IsMainMenuActive())
         {
             Instantiate(bullet, LaunchOffset.position, transform.rotation);
         }
-
         if (!IsMainMenuActive() && menuAction.triggered)
         {
             PauseMenu.GetComponent<UIDocument>().rootVisualElement.style.display = DisplayStyle.Flex;
@@ -59,5 +70,10 @@ public class PlayerScript : MonoBehaviour
     private bool IsMainMenuActive()
     {
         return PauseMenu.GetComponent<UIDocument>().rootVisualElement.style.display == DisplayStyle.Flex;
+    }
+
+    public void TakenDamage(string enemyName)
+    {
+        HealthManager.TakeDamage(10);
     }
 }

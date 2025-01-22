@@ -3,6 +3,7 @@ using UnityEngine.UIElements;
 
 public class MainMenuEvents : MonoBehaviour
 {
+    public static bool _isRestarting = false;
     private UIDocument _document;
     private Button _startButton;
     private Button _quitButton;
@@ -17,6 +18,11 @@ public class MainMenuEvents : MonoBehaviour
         _startButton.RegisterCallback<ClickEvent>(OnStartClick);
         _quitButton.RegisterCallback<ClickEvent>(OnQuitClick);
 
+        if (_isRestarting)
+        {
+            OnStartClick(new ClickEvent());
+            return;
+        }
         Time.timeScale = 0;
     }
 
