@@ -9,6 +9,7 @@ TagManager:
   - Barrier
   - PauseMenu
   - Healthbar
+  - GameOver
   layers:
   - Default
   - TransparentFX
