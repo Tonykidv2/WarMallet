@@ -59,6 +59,11 @@ public class PlayerScript : MonoBehaviour
             PauseMenu.GetComponent<UIDocument>().rootVisualElement.style.display = DisplayStyle.Flex;
             Time.timeScale = 0;
         }
+        else if (IsMainMenuActive() && menuAction.triggered)
+        {
+            PauseMenu.GetComponent<UIDocument>().rootVisualElement.style.display = DisplayStyle.None;
+            Time.timeScale = 1;
+        }
     }
 
     private void FixedUpdate()

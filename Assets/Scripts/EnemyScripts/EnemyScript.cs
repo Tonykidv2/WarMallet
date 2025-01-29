@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyScript : MonoBehaviour
 {
     public string EnemyName = string.Empty;
 
     private Transform PlayerCharacter;
+    private NavMeshAgent Agent;
     public float Speed = 3;
     public bool hasHurtEnemy = false;
     public float pushBack = .25f;
@@ -14,12 +16,20 @@ public class EnemyScript : MonoBehaviour
     void Start()
     {
         PlayerCharacter = GameObject.FindGameObjectWithTag("Player").transform;
+        Agent = GetComponent<NavMeshAgent>();
+        Agent.updateRotation = false;
+        Agent.updateUpAxis = false;
+        
+
         pushBackDelta = pushBack;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // get direction you want to point at
+        Vector2 direction = ((Vector2)PlayerCharacter.position - (Vector2)transform.position).normalized;
+
         if (hasHurtEnemy)
         {
             pushBackDelta -= Time.deltaTime;
@@ -28,15 +38,15 @@ public class EnemyScript : MonoBehaviour
                 pushBackDelta = pushBack;
                 hasHurtEnemy = false;
             }
+
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(PlayerCharacter.transform.position.x, PlayerCharacter.transform.position.y), (hasHurtEnemy ? -Speed * Time.deltaTime : (Speed * Time.deltaTime)));
+        }
+        else
+        {
+            Agent.SetDestination(PlayerCharacter.position);
         }
 
-        // get direction you want to point at
-        Vector2 direction = ((Vector2)PlayerCharacter.position - (Vector2)transform.position).normalized;
-
-        // set vector of transform directly
         transform.up = direction;
-
-        transform.position = Vector2.MoveTowards(transform.position, new Vector2(PlayerCharacter.transform.position.x, PlayerCharacter.transform.position.y), (hasHurtEnemy ?  -Speed * Time.deltaTime : (Speed * Time.deltaTime)));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
