@@ -3,6 +3,8 @@ using UnityEngine.AI;
 
 public class EnemyScript : MonoBehaviour
 {
+    public BarrierObject BarrierSpawner;
+
     public string EnemyName = string.Empty;
 
     private Transform PlayerCharacter;
@@ -15,6 +17,7 @@ public class EnemyScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        BarrierSpawner = GameObject.FindGameObjectWithTag("Barrier").GetComponent<BarrierObject>();
         PlayerCharacter = GameObject.FindGameObjectWithTag("Player").transform;
         Agent = GetComponent<NavMeshAgent>();
         Agent.updateRotation = false;
@@ -55,10 +58,12 @@ public class EnemyScript : MonoBehaviour
         {
             hasHurtEnemy = true;
             PlayerCharacter.gameObject.GetComponent<PlayerScript>().TakenDamage(EnemyName);
+            BarrierSpawner.PlayerHit();
         }
 
         if(collision.gameObject.tag == "Bullet")
         {
+            BarrierSpawner.EnemyDefeated();
             Destroy(gameObject);
         }
     }

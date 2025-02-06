@@ -10,6 +10,7 @@ TagManager:
   - PauseMenu
   - Healthbar
   - GameOver
+  - Score
   layers:
   - Default
   - TransparentFX

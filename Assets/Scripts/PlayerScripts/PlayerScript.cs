@@ -48,6 +48,8 @@ public class PlayerScript : MonoBehaviour
         {
             Time.timeScale = 0;
             GameOver.GetComponent<UIDocument>().rootVisualElement.style.display = DisplayStyle.Flex;
+            var label = GameOver.GetComponent<UIDocument>().rootVisualElement.Q<Label>("FinalScoreNumber");
+            label.text = GameObject.FindGameObjectWithTag("Barrier").GetComponent<BarrierObject>().GetScore().ToString();
         }
 
         if(shootAction.triggered && Time.timeScale != 0 && !IsMainMenuActive())
