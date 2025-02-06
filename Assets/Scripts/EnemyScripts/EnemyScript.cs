@@ -22,7 +22,6 @@ public class EnemyScript : MonoBehaviour
         Agent = GetComponent<NavMeshAgent>();
         Agent.updateRotation = false;
         Agent.updateUpAxis = false;
-        
 
         pushBackDelta = pushBack;
     }

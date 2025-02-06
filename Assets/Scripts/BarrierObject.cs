@@ -1,9 +1,13 @@
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 
 public class BarrierObject : MonoBehaviour
 {
+    public List<AudioClip> audioClips;
+    private AudioSource AudioSource;
+
     //I was having trouble keeping the player within the screen
     public GameObject scoreText;
     public GameObject barrierPrefab;
@@ -42,6 +46,7 @@ public class BarrierObject : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        AudioSource = GetComponent<AudioSource>();
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         //Top Barrier
         topBarrier = Instantiate(barrierPrefab);
@@ -87,12 +92,15 @@ public class BarrierObject : MonoBehaviour
     public void EnemyDefeated()
     {
         enemyDefeated++;
-
+        
         Score += 100;
 
         Score = Mathf.Clamp(Score, 0, 999999999);
 
         scoreText.GetComponent<TextMeshProUGUI>().text = "Score: " + Score.ToString().PadLeft(9, '0');
+
+        int randomIndex = Random.Range(0, 8);
+        AudioSource.PlayOneShot(audioClips[randomIndex]);
 
         if (enemyDefeated >= 10)
         {

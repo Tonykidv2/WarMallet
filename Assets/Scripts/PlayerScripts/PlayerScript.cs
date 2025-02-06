@@ -14,6 +14,7 @@ public class PlayerScript : MonoBehaviour
 
     private Rigidbody2D rigidBody;
     private PlayerInput playerInput;
+    private AudioSource shootEffectSound;
     private InputAction moveAction;
     private InputAction shootAction;
     private InputAction menuAction;
@@ -32,6 +33,7 @@ public class PlayerScript : MonoBehaviour
         moveAction = playerInput.actions.FindAction("Move");
         menuAction = playerInput.actions.FindAction("Pause");
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        shootEffectSound = GetComponent<AudioSource>();
 
         HealthManager = GameObject.FindGameObjectWithTag("Healthbar").GetComponent<HealthManager>();
 
@@ -50,11 +52,13 @@ public class PlayerScript : MonoBehaviour
             GameOver.GetComponent<UIDocument>().rootVisualElement.style.display = DisplayStyle.Flex;
             var label = GameOver.GetComponent<UIDocument>().rootVisualElement.Q<Label>("FinalScoreNumber");
             label.text = GameObject.FindGameObjectWithTag("Barrier").GetComponent<BarrierObject>().GetScore().ToString();
+            GameObject.FindGameObjectWithTag("World").GetComponent<MusicScript>().GameOverSet();
         }
 
         if(shootAction.triggered && Time.timeScale != 0 && !IsMainMenuActive())
         {
             Instantiate(bullet, LaunchOffset.position, transform.rotation);
+            shootEffectSound.Play();
         }
         if (!IsMainMenuActive() && menuAction.triggered)
         {
